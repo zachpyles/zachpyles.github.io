@@ -12,17 +12,22 @@
             overflow: hidden;
         }
         video {
-            position: absolute;
+            position: fixed;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
-            max-width: 100%;
-            max-height: 100%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+            transform: translateX(-50%) translateY(-50%);
+            background-size: cover;
+            transition: 1s opacity;
         }
     </style>
 </head>
 <body>
-    <video autoplay loop id="video" playsinline>
+    <video autoplay loop id="video">
         <source src="https://www.dropbox.com/scl/fi/po0fgzv6rhi41djtbv2k0/Tease_1.MP4?rlkey=p49ipz461k429ilz7lxuvy8bo&raw=1" type="video/mp4">
         Your browser does not support the video tag.
     </video>
