@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Display</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Courier New', Courier, monospace;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            text-shadow: 2px 2px 4px #000000;
+        }
+    </style>
+</head>
+<body>
+    <div id="text"></div>
+    <script>
+        const images = [
+                "https://i.imgur.com/i31SLZE.jpeg",
+    "https://i.imgur.com/nY0iaxC.jpeg",
+    "https://i.imgur.com/U9OVMdK.jpeg",
+    "https://i.imgur.com/XTZDSVC.jpeg",
+    "https://i.imgur.com/AOMGj3h.jpeg",
+    "https://i.imgur.com/Req1QDk.jpeg",
+    "https://i.imgur.com/Kxdd981.jpeg",
+    "https://i.imgur.com/OQLOOxB.jpeg",
+    "https://i.imgur.com/lx9Cmhs.jpeg",
+    "https://i.imgur.com/67rgLlv.jpeg",
+    "https://i.imgur.com/UWuI0Ug.jpeg",
+    "https://i.imgur.com/bjJViya.jpeg",
+    "https://i.imgur.com/reLy8nL.jpeg",
+    "https://i.imgur.com/p9sVvqr.jpeg",
+    "https://i.imgur.com/xH4wVjZ.jpeg",
+    "https://i.imgur.com/tZIHPuj.jpeg",
+    "https://i.imgur.com/UzICuu4.jpeg",
+    "https://i.imgur.com/MjFYgwG.jpeg",
+    "https://i.imgur.com/Akv1ChR.jpeg",
+    "https://i.imgur.com/cVPi1hG.jpeg",
+    "https://i.imgur.com/7rhO9HG.jpeg",
+    "https://i.imgur.com/BwqyClk.jpeg",
+    "https://i.imgur.com/CeFJRQT.jpeg",
+    "https://i.imgur.com/MmjGUMM.jpeg",
+    "https://i.imgur.com/rr0lrjM.jpeg",
+    "https://i.imgur.com/LcuxRmL.jpeg",
+    "https://i.imgur.com/YMQegQE.jpeg",
+    "https://i.imgur.com/nZZgM02.jpeg",
+    "https://i.imgur.com/nfkHRfs.jpeg",
+    "https://i.imgur.com/ZHdI0JY.jpeg",
+    "https://i.imgur.com/SlkpiOa.jpeg",
+    "https://i.imgur.com/0ZM577i.jpeg",
+    "https://i.imgur.com/RDAP38n.jpeg",
+    "https://i.imgur.com/yZJM19t.jpeg",
+    "https://i.imgur.com/yK49ao5.jpeg",
+    "https://i.imgur.com/abo1ZMj.jpeg",
+    "https://i.imgur.com/YDaSoUX.jpeg",
+    "https://i.imgur.com/crPJzIv.jpeg",
+    "https://i.imgur.com/5SloJuD.jpeg",
+    "https://i.imgur.com/lwEnxg2.jpeg",
+    "https://i.imgur.com/z0q4rWq.jpeg",
+    "https://i.imgur.com/vjDS4j7.jpeg",
+    "https://i.imgur.com/vcHUC2F.jpeg",
+    "https://i.imgur.com/I1yKO2M.jpeg",
+    "https://i.imgur.com/brYj41S.jpeg",
+    "https://i.imgur.com/94PJKJu.jpeg",
+    "https://i.imgur.com/U2zh8cM.jpeg",
+    "https://i.imgur.com/V9oxSCo.jpeg",
+    "https://i.imgur.com/LNkf08w.jpeg",
+    "https://i.imgur.com/tIL858W.jpeg",
+    "https://i.imgur.com/qmBDeZk.jpeg",
+    "https://i.imgur.com/N6MALKj.jpeg",
+    "https://i.imgur.com/bfy3T55.jpeg",
+    "https://i.imgur.com/pmsNuax.jpeg",
+    "https://i.imgur.com/Z5AAHpE.jpeg",
+    "https://i.imgur.com/qGcEtbD.jpeg",
+    "https://i.imgur.com/0AmnnZJ.jpeg",
+    "https://i.imgur.com/6kYJ5S6.jpeg",
+    "https://i.imgur.com/WXTwznc.jpeg",
+    "https://i.imgur.com/PdUazft.jpeg"
+        ];
+        const phrases = [
+            "here it is", 
+            "happy", 
+            "the big reveal", 
+            "it's us", 
+            "now you can see it", 
+            "this is what it is", 
+            "self evident",
+            "comforting",
+            "it's all coming together",
+            "context is so necessary",
+            "it was us all along",
+            "visual confirmation",
+            "uptick",
+            "a nice thing",
+            "good people",
+            "finally, at last!"
+        ];
+        let currentIndex = 0;
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        shuffleArray(images);
+
+        function changeImage() {
+            currentIndex++;
+            if (currentIndex >= images.length) {
+                shuffleArray(images);
+                currentIndex = 0;
+            }
+            document.body.style.backgroundImage = `url(${images[currentIndex]})`;
+        }
+
+        function changeText() {
+            const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
+            document.getElementById('text').innerText = randomPhrase;
+        }
+
+        setInterval(changeImage, 200);  // 5 images per second
+        setInterval(changeText, 500);   // 2 times per second
+    </script>
+</body>
+</html>

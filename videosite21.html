@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Streaming Site</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            background-color: #000080; /* Deep blue color */
+            overflow: hidden; /* Hide scrollbars */
+        }
+        #splash {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('https://i.imgur.com/ZuA8vwX.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        #goButton {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            border: 2px solid white;
+            padding: 10px 20px;
+            background-color: transparent;
+        }
+        video {
+            /* Center the video */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 100vw;
+            max-height: 100vh;
+            object-fit: cover;
+            display: none; /* Initially hide the video */
+        }
+    </style>
+</head>
+<body>
+    <div id="splash">
+        <div id="goButton" onclick="startVideo()">Go</div>
+    </div>
+    <video id="videoPlayer" autoplay muted loop>
+        <source src="https://www.dropbox.com/scl/fi/po0fgzv6rhi41djtbv2k0/Tease_1.MP4?rlkey=p49ipz461k429ilz7lxuvy8bo&raw=1" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <script>
+        function startVideo() {
+            var video = document.getElementById('videoPlayer');
+            var splash = document.getElementById('splash');
+            
+            splash.style.display = 'none'; // Hide splash
+            video.style.display = 'block'; // Show video
+            video.muted = false;
+            video.play(); // Start video playback
+        }
+    </script>
+</body>
+</html>
