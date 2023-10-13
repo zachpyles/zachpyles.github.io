@@ -5,10 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Streaming Site</title>
     <style>
+    @font-face {
+        font-family: 'PixelFont';
+        src: url('https://fonts.gstatic.com/s/pressstart2p/v9/e3t4euO8T-267oIAQAu6jDQyK3nYivN04w.woff2') format('woff2');
+    }
+    
         body, html {
             height: 100%;
             margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'PixelFont';
             background-color: #000080; /* Deep blue color */
             overflow: hidden; /* Hide scrollbars */
         }
@@ -18,12 +23,14 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            border: none;
+            max-width: 100%;
+            max-height: 100%;
+            display: none; /* Initially hide the video */
         }
         #splash {
+            font-family: 'PixelFont';
+            border: 2px solid white;
+            padding: 10px 20px;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -31,25 +38,23 @@
             color: white;
             font-size: 24px;
             cursor: pointer;
-            font-weight: bold;
-            font-family: 'Courier New', Courier, monospace;
-            border: 2px solid white;
-            padding: 10px 20px;
         }
     </style>
 </head>
 <body>
     <div id="splash" onclick="startVideo()">Begin</div>
-    <video id="mainVideo" muted>
-        <source src="https://www.dropbox.com/scl/fi/po0fgzv6rhi41djtbv2k0/Tease_1.MP4?raw=1" type="video/mp4">
+    <video id="videoPlayer" loop>
+        <source src="https://www.dropbox.com/scl/fi/po0fgzv6rhi41djtbv2k0/Tease_1.MP4?rlkey=p49ipz461k429ilz7lxuvy8bo&raw=1" type="video/mp4">
         Your browser does not support the video tag.
     </video>
     <script>
         function startVideo() {
-            var videoElem = document.getElementById('mainVideo');
-            videoElem.play();
-            videoElem.setAttribute('controls', 'true'); // show controls when video starts
-            document.getElementById('splash').style.display = 'none'; // hide splash screen
+            var video = document.getElementById('videoPlayer');
+            var splash = document.getElementById('splash');
+            
+            splash.style.display = 'none'; // Hide splash
+            video.style.display = 'block'; // Show video
+            video.play(); // Start video playback
         }
     </script>
 </body>
