@@ -12,12 +12,16 @@
             background-color: #000080; /* Deep blue color */
             overflow: hidden; /* Hide scrollbars */
         }
-        iframe {
+        video {
             /* Center the video */
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            border: none;
         }
         #splash {
             position: absolute;
@@ -27,13 +31,26 @@
             color: white;
             font-size: 24px;
             cursor: pointer;
-            display: none;  /* Hide splash page as it's not needed for live stream */
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+            border: 2px solid white;
+            padding: 10px 20px;
         }
     </style>
 </head>
 <body>
     <div id="splash" onclick="startVideo()">Begin</div>
-    <iframe width="424" height="240" src="https://www.youtube.com/embed/8x2pV-HUHG0" title="promo title work" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <video id="mainVideo" muted>
+        <source src="https://www.dropbox.com/scl/fi/po0fgzv6rhi41djtbv2k0/Tease_1.MP4?raw=1" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <script>
+        function startVideo() {
+            var videoElem = document.getElementById('mainVideo');
+            videoElem.play();
+            videoElem.setAttribute('controls', 'true'); // show controls when video starts
+            document.getElementById('splash').style.display = 'none'; // hide splash screen
+        }
+    </script>
 </body>
 </html>
-
